@@ -109,3 +109,44 @@ INSERT INTO productos (nombre, tipo, precio_base) VALUES
 ('Galletas decoradas (docena)',  'galleta', 250.00),
 ('Brownies (caja de 12)',        'postre',  280.00),
 ('Pastel de boda (3 pisos)',     'pastel', 2500.00);
+
+INSERT INTO receta (producto_id, ingrediente_id, cantidad) VALUES
+(1, 1, 0.5), (1, 2, 0.4), (1, 3, 4), (1, 4, 0.25), (1, 6, 0.3),
+(2, 1, 0.5), (2, 2, 0.4), (2, 3, 4), (2, 4, 0.25), (2, 7, 10),
+(3, 1, 0.4), (3, 2, 0.4), (3, 3, 5), (3, 5, 1),    (3, 9, 0.5),
+(4, 1, 0.5), (4, 2, 0.4), (4, 3, 4), (4, 10, 0.2),
+(5, 10, 0.8),(5, 11, 0.5),(5, 2, 0.2),(5, 3, 3),
+(6, 1, 0.4), (6, 2, 0.3), (6, 3, 4), (6, 7, 10),
+(7, 1, 0.4), (7, 2, 0.3), (7, 3, 4), (7, 6, 0.15),
+(8, 1, 0.5), (8, 2, 0.25),(8, 4, 0.25),(8, 12, 10),
+(9, 6, 0.3), (9, 4, 0.2), (9, 2, 0.3), (9, 3, 3),
+(10, 1, 1.5),(10, 2, 1.2),(10, 3, 12),(10, 4, 0.75),(10, 9, 1);
+
+INSERT INTO pedidos (cliente_id, fecha_pedido, fecha_entrega, direccion, anticipo, total, estado) VALUES
+(1,  '2026-10-20', '2026-10-25', 'Col. Palmira, Tegucigalpa',      400.00,  750.00, 'entregado'),
+(2,  '2026-10-22', '2026-10-26', 'Barrio Abajo, Comayagua',        250.00,  500.00, 'entregado'),
+(3,  '2026-10-25', '2026-10-30', 'Res. Los Pinos, Tegucigalpa',   1500.00, 2500.00, 'confirmado'),
+(4,  '2026-10-26', '2026-10-29', 'Col. Kennedy, Tegucigalpa',      325.00,  650.00, 'confirmado'),
+(5,  '2026-10-27', '2026-11-01', 'Barrio Arriba, Comayagua',       300.00,  550.00, 'pendiente'),
+(6,  '2026-10-27', '2026-10-30', 'Col. Miraflores, Tegucigalpa',   320.00,  640.00, 'pendiente'),
+(7,  '2026-10-24', '2026-10-28', 'Col. San Miguel, Comayagua',     400.00,  760.00, 'en_preparacion'),
+(8,  '2026-10-27', '2026-11-05', 'Col. Loarque, Tegucigalpa',      600.00, 1010.00, 'pendiente'),
+(9,  '2026-10-15', '2026-10-20', 'Col. Las Colinas, Tegucigalpa',  300.00,  550.00, 'cancelado'),
+(10, '2026-10-27', '2026-11-10', 'Barrio El Centro, Comayagua',    500.00, 1000.00, 'pendiente');
+
+INSERT INTO detalle_pedido (pedido_id, producto_id, cantidad, precio_unitario, personalizacion) VALUES
+(1,  1, 1, 450.00, 'Mensaje: Feliz cumpleaños Ana'),
+(1,  6, 1, 300.00, NULL),
+(2,  3, 1, 500.00, 'Decoración con flores rosadas'),
+(3, 10, 1, 2500.00, 'Boda de Maria y Luis, tonos blanco y dorado'),
+(4,  2, 1, 400.00, 'Decoración azul con tema de fútbol'),
+(4,  8, 1, 250.00, 'Galletas con el logo del equipo'),
+(5,  5, 1, 550.00, NULL),
+(6,  7, 2, 320.00, 'Chispas de colores'),
+(7,  4, 1, 480.00, NULL),
+(7,  9, 1, 280.00, NULL),
+(8,  1, 1, 450.00, 'Mensaje: Felicidades Graduado'),
+(8,  9, 2, 280.00, NULL),
+(9,  6, 1, 300.00, NULL),
+(9,  8, 1, 250.00, 'Galletas de unicornio'),
+(10, 3, 2, 500.00, 'Uno de ellos sin nueces');
