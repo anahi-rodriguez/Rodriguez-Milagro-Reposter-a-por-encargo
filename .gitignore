@@ -1,0 +1,9 @@
+# Base de datos (se genera con crear_bd.sql)
+*.db
+
+# Entorno virtual y archivos de Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
