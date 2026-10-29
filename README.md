@@ -4,9 +4,9 @@
 
 Sistema para gestionar los pedidos personalizados de una repostería: clientes, productos, recetas, control de inventario de ingredientes y entregas.
 
-**Estudiante:** Milagro Anahi Rodriguez Rodriguez
-**Asignatura:** Programación III (IS-151) · Ing. Elias Emilio Flores Domínguez, MSc.
-**Período:** IV PAC 2026
+- **Estudiante:** Milagro Anahi Rodriguez Rodriguez
+- **Asignatura:** Programación III (IS-151) · Ing. Elias Emilio Flores Domínguez, MSc.
+- **Período:** IV PAC 2026
 
 ## Problema que resuelve
 
