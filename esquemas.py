@@ -1,6 +1,7 @@
 from typing import Literal
 
 from pydantic import BaseModel, Field
+from datetime import date
 
 
 class ClienteEntrada(BaseModel):
@@ -47,3 +48,46 @@ class RecetaDetalleSalida(BaseModel):
     ingrediente: str
     unidad: str
     cantidad: float
+
+class DetallePedidoEntrada(BaseModel):
+    producto_id: int
+    cantidad: int = Field(gt=0)
+    personalizacion: str | None = None
+
+
+class PedidoEntrada(BaseModel):
+    cliente_id: int
+    fecha_entrega: date
+    direccion: str = Field(min_length=1)
+    anticipo: float = Field(ge=0)
+    detalles: list[DetallePedidoEntrada] = Field(min_length=1)
+
+
+class PedidoActualizar(BaseModel):
+    fecha_entrega: date
+    direccion: str = Field(min_length=1)
+    anticipo: float = Field(ge=0)
+
+
+class DetallePedidoSalida(BaseModel):
+    id: int
+    producto_id: int
+    producto: str
+    cantidad: int
+    precio_unitario: float
+    personalizacion: str | None = None
+
+
+class PedidoSalida(BaseModel):
+    id: int
+    cliente_id: int
+    fecha_pedido: date
+    fecha_entrega: date
+    direccion: str
+    anticipo: float
+    total: float
+    estado: str
+
+
+class PedidoDetalleSalida(PedidoSalida):
+    detalles: list[DetallePedidoSalida]
