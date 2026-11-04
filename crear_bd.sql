@@ -76,7 +76,7 @@ INSERT INTO clientes (nombre, telefono, correo, direccion) VALUES
 ('Ana Martínez',     '9876-1234', 'ana.martinez@gmail.com',   'Col. Palmira, Tegucigalpa'),
 ('Carlos Mejía',     '9988-4521', 'carlos.mejia@gmail.com',   'Barrio Abajo, Comayagua'),
 ('Lucía Fernández',  '3345-7788', 'lucia.fernandez@gmail.com','Res. Los Pinos, Tegucigalpa'),
-('José Alvarado',    '9455-3310', 'jose.alvarado@gmail.com',  'Col. Kennedy, Tegucigalpa'),
+('José Alvarado',    '94|55-3310', 'jose.alvarado@gmail.com',  'Col. Kennedy, Tegucigalpa'),
 ('María Reyes',      '8890-2267', 'maria.reyes@gmail.com',    'Barrio Arriba, Comayagua'),
 ('Pedro Castillo',   '3120-9984', 'pedro.castillo@gmail.com', 'Col. Miraflores, Tegucigalpa'),
 ('Sofía Ordóñez',    '9712-6543', 'sofia.ordonez@gmail.com',  'Col. San Miguel, Comayagua'),
