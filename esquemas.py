@@ -21,3 +21,12 @@ class ProductoEntrada(BaseModel):
 
 class ProductoSalida(ProductoEntrada):
     id: int
+
+class IngredienteEntrada(BaseModel):
+    nombre: str = Field(min_length=1)
+    unidad: str = Field(min_length=1)
+    existencia: float = Field(ge=0)
+
+
+class IngredienteSalida(IngredienteEntrada):
+    id: int

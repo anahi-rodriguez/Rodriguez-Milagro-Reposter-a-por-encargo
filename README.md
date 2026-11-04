@@ -57,7 +57,7 @@ python -c "import sqlite3; c=sqlite3.connect('reposteria.db'); c.executescript(o
 ## Avance
 
 - [x] Diseño: repositorio, diagrama ER, UML y `crear_bd.sql`
-- [ ] Avance 1: capas y CRUD de 2 tablas
+- [x] Avance 1: capas y CRUD de 2 tablas
 - [ ] Proyecto 2: CRUD completo, reglas de negocio, login y pruebas
 - [ ] Avance 2: dashboard
 - [ ] Avance 3: reportes, CSV y respaldo
