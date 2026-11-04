@@ -91,3 +91,23 @@ class PedidoSalida(BaseModel):
 
 class PedidoDetalleSalida(PedidoSalida):
     detalles: list[DetallePedidoSalida]
+
+class IngredienteNecesarioSalida(BaseModel):
+    ingrediente_id: int
+    ingrediente: str
+    unidad: str
+    necesario: float
+    existencia: float
+    alcanza: bool
+
+
+class EntregaSalida(BaseModel):
+    id: int
+    cliente: str
+    telefono: str
+    direccion: str
+    fecha_entrega: date
+    estado: str
+    total: float
+    anticipo: float
+    saldo: float

@@ -7,11 +7,13 @@ from modelos.pedido import Pedido
 from repositorios.cliente_repositorio import ClienteRepositorio
 from repositorios.pedido_repositorio import PedidoRepositorio
 from repositorios.producto_repositorio import ProductoRepositorio
+from servicios.gestor_inventario import GestorInventario
 
 router = APIRouter(prefix="/pedidos", tags=["Pedidos"])
 repo = PedidoRepositorio()
 repo_clientes = ClienteRepositorio()
 repo_productos = ProductoRepositorio()
+gestor = GestorInventario(repo)
 
 
 def pedido_completo(pedido_id):
@@ -112,3 +114,33 @@ def eliminar(id: int):
     if not repo.eliminar_con_detalles(id):
         raise HTTPException(status_code=404, detail="Pedido no encontrado")
     return {"mensaje": "Pedido eliminado"}
+
+@router.get("/{id}/ingredientes", response_model=list[IngredienteNecesarioSalida])
+def ingredientes_del_pedido(id: int):
+    if repo.obtener_por_id(id) is None:
+        raise HTTPException(status_code=404, detail="Pedido no encontrado")
+    return gestor.necesidades(id)
+
+
+@router.put("/{id}/confirmar", response_model=PedidoDetalleSalida)
+def confirmar(id: int):
+    pedido = repo.obtener_por_id(id)
+    if pedido is None:
+        raise HTTPException(status_code=404, detail="Pedido no encontrado")
+    if pedido["estado"] != "pendiente":
+        raise HTTPException(
+            status_code=400, detail="Solo se puede confirmar un pedido pendiente"
+        )
+
+    faltantes = gestor.faltantes(id)
+    if faltantes:
+        detalle = ", ".join(
+            f"{f['ingrediente']} (faltan {f['falta']} {f['unidad']})" for f in faltantes
+        )
+        raise HTTPException(
+            status_code=400,
+            detail=f"No se puede confirmar, faltan ingredientes: {detalle}",
+        )
+
+    gestor.descontar_por_pedido(id)
+    return pedido_completo(id)
