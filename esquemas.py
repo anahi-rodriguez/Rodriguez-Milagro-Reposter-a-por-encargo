@@ -30,3 +30,20 @@ class IngredienteEntrada(BaseModel):
 
 class IngredienteSalida(IngredienteEntrada):
     id: int
+
+class RecetaEntrada(BaseModel):
+    producto_id: int
+    ingrediente_id: int
+    cantidad: float = Field(gt=0)
+
+
+class RecetaSalida(RecetaEntrada):
+    id: int
+
+
+class RecetaDetalleSalida(BaseModel):
+    id: int
+    ingrediente_id: int
+    ingrediente: str
+    unidad: str
+    cantidad: float
