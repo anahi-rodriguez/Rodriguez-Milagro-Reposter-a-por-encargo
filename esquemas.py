@@ -111,3 +111,7 @@ class EntregaSalida(BaseModel):
     total: float
     anticipo: float
     saldo: float
+
+class TokenSalida(BaseModel):
+    access_token: str
+    token_type: str

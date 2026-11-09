@@ -62,3 +62,18 @@ python -c "import sqlite3; c=sqlite3.connect('reposteria.db'); c.executescript(o
 - [ ] Avance 2: dashboard
 - [ ] Avance 3: reportes, CSV y respaldo
 - [ ] Proyecto final
+
+## Cómo ejecutar
+
+1. Crear y activar el entorno virtual, e instalar dependencias:
+   python -m venv venv
+   .\venv\Scripts\Activate.ps1
+   pip install -r requirements.txt
+2. Crear la base de datos con datos de prueba:
+   python -c "import sqlite3; c=sqlite3.connect('reposteria.db'); c.executescript(open('crear_bd.sql', encoding='utf-8').read())"
+3. Crear el usuario administrador:
+   python crear_admin.py
+4. Iniciar la API y abrir http://127.0.0.1:8000/docs:
+   uvicorn main:app --reload
+5. Ejecutar las pruebas:
+   pytest -v
