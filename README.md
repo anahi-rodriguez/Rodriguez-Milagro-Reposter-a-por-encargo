@@ -58,22 +58,41 @@ python -c "import sqlite3; c=sqlite3.connect('reposteria.db'); c.executescript(o
 
 - [x] Diseño: repositorio, diagrama ER, UML y `crear_bd.sql`
 - [x] Avance 1: capas y CRUD de 2 tablas
-- [ ] Proyecto 2: CRUD completo, reglas de negocio, login y pruebas
-- [ ] Avance 2: dashboard
+- [x] Proyecto 2: CRUD completo, reglas de negocio, login y pruebas
+- [x] Avance 2: dashboard
 - [ ] Avance 3: reportes, CSV y respaldo
 - [ ] Proyecto final
 
 ## Cómo ejecutar
 
-1. Crear y activar el entorno virtual, e instalar dependencias:
+1. Crear y activar el entorno virtual e instalar las dependencias:
+
+   ```
    python -m venv venv
    .\venv\Scripts\Activate.ps1
    pip install -r requirements.txt
+   ```
+
 2. Crear la base de datos con datos de prueba:
+
+   ```
    python -c "import sqlite3; c=sqlite3.connect('reposteria.db'); c.executescript(open('crear_bd.sql', encoding='utf-8').read())"
+   ```
+
 3. Crear el usuario administrador:
+
+   ```
    python crear_admin.py
-4. Iniciar la API y abrir http://127.0.0.1:8000/docs:
+   ```
+
+4. Iniciar la API y abrir http://127.0.0.1:8000/docs :
+
+   ```
    uvicorn main:app --reload
+   ```
+
 5. Ejecutar las pruebas:
-   pytest -v
+
+   ```
+   python -m pytest -v
+   ```
