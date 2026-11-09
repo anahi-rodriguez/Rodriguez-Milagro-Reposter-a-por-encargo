@@ -12,4 +12,4 @@ repo = PedidoRepositorio()
 @router.get("/", response_model=list[EntregaSalida])
 def entregas_del_dia(fecha: date | None = None):
     dia = fecha or date.today()
-    return repo.entregas_del_dia(dia.isoformat())
+    return repo.entregas_del_dia(dia.isoformat())   

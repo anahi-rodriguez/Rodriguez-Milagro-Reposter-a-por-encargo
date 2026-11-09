@@ -2,7 +2,13 @@ from datetime import date
 
 from fastapi import APIRouter, HTTPException
 
-from esquemas import PedidoActualizar, PedidoDetalleSalida, PedidoEntrada, PedidoSalida
+from esquemas import (
+    IngredienteNecesarioSalida,
+    PedidoActualizar,
+    PedidoDetalleSalida,
+    PedidoEntrada,
+    PedidoSalida,
+)
 from modelos.pedido import Pedido
 from repositorios.cliente_repositorio import ClienteRepositorio
 from repositorios.pedido_repositorio import PedidoRepositorio
