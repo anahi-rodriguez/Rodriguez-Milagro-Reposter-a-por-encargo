@@ -104,3 +104,12 @@ class PedidoRepositorio(RepositorioBase):
             ORDER BY p.id""",
             (fecha,),
         )
+
+    def detalles_con_producto(self):
+        return self._consultar(
+            """SELECT d.pedido_id, p.nombre AS producto, d.cantidad, d.precio_unitario
+            FROM detalle_pedido d
+            JOIN productos p ON p.id = d.producto_id
+            JOIN pedidos pe ON pe.id = d.pedido_id
+            WHERE pe.estado != 'cancelado'"""
+        )

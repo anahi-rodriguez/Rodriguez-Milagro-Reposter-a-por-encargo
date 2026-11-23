@@ -2,6 +2,7 @@ from fastapi import Depends, FastAPI
 
 from routers import auth, clientes, entregas, ingredientes, pedidos, productos, receta
 from seguridad import obtener_usuario_actual
+from routers import reportes
 
 app = FastAPI(title="Repostería por encargo")
 
@@ -14,6 +15,7 @@ app.include_router(ingredientes.router, dependencies=protegido)
 app.include_router(receta.router, dependencies=protegido)
 app.include_router(pedidos.router, dependencies=protegido)
 app.include_router(entregas.router, dependencies=protegido)
+app.include_router(reportes.router, dependencies=protegido)
 
 
 @app.get("/")
