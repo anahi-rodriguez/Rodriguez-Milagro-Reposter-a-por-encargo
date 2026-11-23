@@ -113,3 +113,12 @@ class PedidoRepositorio(RepositorioBase):
             JOIN pedidos pe ON pe.id = d.pedido_id
             WHERE pe.estado != 'cancelado'"""
         )
+    def pedidos_con_cliente(self):
+        return self._consultar(
+            """SELECT p.id, c.nombre AS cliente, p.fecha_pedido, p.fecha_entrega,
+                    p.estado, p.total, p.anticipo,
+                    ROUND(p.total - p.anticipo, 2) AS saldo
+                    FROM pedidos p
+                    JOIN clientes c ON c.id = p.cliente_id
+                    ORDER BY p.id"""
+        )

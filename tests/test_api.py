@@ -84,3 +84,25 @@ def test_confirmar_pedido_descuenta_el_inventario(api):
     assert r.json()["estado"] == "confirmado"
     fresas = api.get("/ingredientes/11").json()
     assert fresas["existencia"] == 5.5
+
+def test_reporte_de_ventas_con_datos_de_prueba(api):
+    r = api.get("/reportes/ventas")
+    assert r.status_code == 200
+    datos = r.json()
+    assert datos["total_pedidos"] == 10
+    assert datos["ventas_total"] == 8360
+    assert datos["saldo_por_cobrar"] == 3765
+
+
+def test_exportar_pedidos_csv(api):
+    r = api.get("/reportes/pedidos/csv")
+    assert r.status_code == 200
+    assert r.headers["content-type"].startswith("text/csv")
+    assert len(r.text.strip().splitlines()) == 11  # encabezado + 10 pedidos
+
+def test_crear_respaldo_genera_un_archivo(cliente, tmp_path, monkeypatch):
+    from servicios import respaldo
+
+    monkeypatch.setattr(respaldo, "CARPETA", tmp_path / "respaldos")
+    nombre = respaldo.crear_respaldo()
+    assert (tmp_path / "respaldos" / nombre).exists()
