@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Repostería por encargo</title>
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+<div id="mensaje" class="mensaje oculto"></div>
+
+<!-- Pantalla de login -->
+<section id="pantalla-login" class="tarjeta-login oculto">
+    <h1>Repostería por encargo</h1>
+    <form id="form-login">
+    <input id="login-usuario" placeholder="Usuario" required>
+    <input id="login-clave" type="password" placeholder="Contraseña" required>
+    <button type="submit">Entrar</button>
+    </form>
+</section>
+
+<!-- Pantalla principal -->
+<section id="pantalla-app" class="oculto">
+    <header>
+    <h1>Repostería por encargo</h1>
+    <nav id="menu"></nav>
+    <button id="btn-salir" class="secundario">Salir</button>
+    </header>
+
+    <main>
+    <h2 id="titulo"></h2>
+    <div class="barra">
+        <input id="buscador" placeholder="Buscar por nombre...">
+        <button id="btn-nuevo">+ Nuevo</button>
+    </div>
+    <table>
+        <thead id="encabezado"></thead>
+        <tbody id="filas"></tbody>
+    </table>
+    </main>
+
+    <!-- Ventana para crear y editar -->
+    <dialog id="dialogo">
+    <form id="form-registro">
+        <h3 id="titulo-form"></h3>
+        <div id="campos"></div>
+        <p id="error-form" class="error-form"></p>
+        <div class="botones">
+        <button type="button" id="btn-cancelar" class="secundario">Cancelar</button>
+        <button type="submit">Guardar</button>
+        </div>
+    </form>
+    </dialog>
+</section>
+
+<script src="app.js"></script>
+</body>
+</html>

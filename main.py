@@ -1,5 +1,8 @@
 from fastapi import Depends, FastAPI
 
+from pathlib import Path
+
+from fastapi.staticfiles import StaticFiles
 from routers import auth, clientes, entregas, ingredientes, pedidos, productos, receta, respaldos
 from seguridad import obtener_usuario_actual
 from routers import reportes
@@ -28,6 +31,7 @@ app.include_router(pedidos.router, dependencies=protegido)
 app.include_router(entregas.router, dependencies=protegido)
 app.include_router(reportes.router, dependencies=protegido)
 app.include_router(respaldos.router, dependencies=protegido)
+app.mount("/app", StaticFiles(directory=Path(__file__).parent / "static", html=True), name="dashboard")
 
 
 @app.get("/")
